@@ -1,17 +1,17 @@
 # Component Interoperability Guidelines
 Community-driven guidelines to provide unity, consistency and sanity within the React 3rd-party component ecosystem.
 
-### Foreward
-TBC
+> ### Foreward
+> TBC
+> 
+> ### Aims of these guidelines
+> To help and guide (but not restrict) developers to...
+> 
+> - Increase portability of components
+> - Simplify and speed developer consumption (ie. consistent api's)
+> - Provide familiar routes to controlling component behaviours (ie. avoid black-boxing components)
 
-### Aims of these guidelines
-To help and guide (but not restrict) developers to...
-
-- Increase portability of components
-- Simplify and speed developer consumption (ie. consistent api's)
-- Provide familiar routes to controlling component behaviours (ie. avoid black-boxing components)
-
---- 
+ 
 ## Sections
 1. [Basic Component Structure](#basic-component-structure)
 2. [Styling Components](#styling-components)
