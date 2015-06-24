@@ -1,5 +1,5 @@
-# React Component Interoperability [???]
-Community driven standards for providing unity amongst the React 3rd-party component ecosystem.
+# React Component Interoperability Guidelines
+Community-driven guidelines to provide unity & consistency within the React 3rd-party component ecosystem.
 
 ### Foreward
 TBC
@@ -9,3 +9,13 @@ TBC
 
 ## Styling Components
 TBC - classmap/stylemap etc.
+
+`<Button classmap={{}} stylemap={{}} />`
+
+Possible consumer helper
+
+`<Button {...style({}, {})} />`
+
+Possible author helper
+
+`<button {...style(classmap.btn, stylemap.btn)} />`
