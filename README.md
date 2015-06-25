@@ -30,12 +30,73 @@ TBC - use of propTypes, doesn't have side effects etc.
 ### Styling Components
 TBC - classmap/stylemap etc.
 
-`<Button classmap={{}} stylemap={{}} />`
+#### As an author...
 
-Possible consumer helper
+Components can opt in to allowing external styling by accepting `classmap` and `stylemap` props. Both should be accepted together to allow consumers to use the styling system of their preference and also to allow the use of both together where needed (ie. js computed styles + classes).
 
-`<Button {...style({}, {})} />`
+```javascript
+propTypes = {
+  classmap: React.PropTypes.object,
+  stylemap: React.PropTypes.object
+}
+```
 
-Possible author helper
+Each one of these props is a simple object map of programmer friendly keys (targets) to their values. It is up to the author to define and document the expected keys. Targets should have identical keys in each object if both are expected.
 
-`<button {...style(classmap.btn, stylemap.btn)} />`
+In the case of a `classmap` the object would resemble a friendly key to a "classname value" map. Note this "classname value" can be any type which would be accepted by the [classnames](https://github.com/JedWatson/classnames) merge function.
+
+> TBC???: And how they are merged together - ie think of the button example below - does (SHOULD???) the author state that `classmap.button` and `classmap.buttonAlt` get merged together or should the classmap have already defined that - ie. `buttonAlt: 'btn btn--alt'` - Seems there might be some consistency needed here? I don't know. Might be nice to have something consistent here as it makes consumption more familiar and makes less "what on earth is expected here?" moments while authoring. Would also be good to have symmetrical behaviour to classmap and stylemap (so what's the best direction for that?)
+
+```jaavscript
+const classmap = {
+  button: 'btn',
+  buttonAlt: 'btn--alt
+};
+```
+
+In the case of a `stylemap` the object would resemble a friendly key to a "style object". Note this "style object" is the value you pass to any dom element as the `style` prop.
+
+```jaavscript
+const stylemap = {
+  button: {padding: '10px, 5px', color: 'white', background: 'blue'},
+  buttonAlt: {background: 'darkblue'}
+};
+```
+
+These props are the highest level api the consumer will be faced with.
+
+Now that you, as the author, have access to these maps you can use them to style the your core components and their sub components. It is also recommended that there should be defaults.
+
+>TBC???: There are many options available for author tools to consume these props so that's next
+
+##### Possible author helper
+
+```javascript
+const {classmap, stylemap} = this.props;
+
+<button {...style(classmap.btn, stylemap.btn)} />
+```
+
+```javascript
+// Use of the above HoC passes special `styles` prop (an object) with above helper performed on each key/val of maps passed in by consumer
+styleHigherOrderComponent(MyComponent);
+const {styles} = this.props;
+
+<button {...styles.btn} />
+```
+
+#### As a consumer...
+
+As a consumer of these guideline compliant components you are simply expected to pass through one of the (or both if needed) above-defined props.
+
+> TBC???: Probably best to have consumer usage above author usage in the flow of these docs...
+
+```javascript
+<Button classmap={classmap} stylemap={stylemap} />
+```
+
+This allows you, as a consumer, to use your own styling system and pass in common formats as props to the 3rd-party component.
+
+#####  Possible consumer helper
+
+`<Button {...style(classmap, stylemap)} />`
