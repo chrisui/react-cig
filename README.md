@@ -78,8 +78,8 @@ const {classmap, stylemap} = this.props;
 ```
 
 ```javascript
-// Use of the above HoC passes special `styles` prop (an object) with above helper performed on each key/val of maps passed in by consumer
-styleHigherOrderComponent(MyComponent);
+// Use of the above HoC passes special `styles` prop (an object) with above helper performed on each key/val of maps passed in by consumer - As a bonus you could have static defaults passed here too
+styleHigherOrderComponent(MyComponent, staticDefaultClassmap, staticDefaultStylemap);
 const {styles} = this.props;
 
 <button {...styles.btn} />
