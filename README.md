@@ -1,7 +1,7 @@
 # Component Interoperability Guidelines
 Community-driven guidelines to provide unity, consistency and sanity within the React 3rd-party component ecosystem.
 
-> ### Foreward
+> ### Foreword
 > TBC
 > 
 > ### Aims of these guidelines
